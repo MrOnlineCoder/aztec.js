@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Aztec.js Example</title>
+</head>
+<body>
+
+<div>
+Text:<br>
+
+<p class="translatable">Hello, I am from {%country%}. The current locale is {%locale%}</p>
+
+<br>
+
+<button onclick="updateText()">Render!</button>
+
+</div>
+
+
+<script src="aztec.js"></script>
+<script type="text/javascript">
+	function updateText() {
+		Aztec.render();
+	}
+
+	Aztec.debug = true;
+	Aztec.addLanguage("english", {country: "England", locale: "English!"});
+	Aztec.setCurrentLanguage("english");
+</script>
+</body>
+</html>
