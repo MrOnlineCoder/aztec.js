@@ -33,9 +33,9 @@ Make a script for setting up Aztec.js:
 
 ```javascript
 
-Aztec.addLanguage("english", {country: "England", locale: "English"});
+Aztec.addLocale("english", {country: "England", locale: "English"});
 
-Aztec.setCurrentLanguage("english");
+Aztec.setLocale("english");
 
 ```
 
@@ -89,9 +89,9 @@ Aztec.translate("country"); // => "England"
 
 **Aztec.translateClass** (String) - a class for elements which should be rendered. Default: *translatable*
 
-**Aztec.addLanguage(name, keys)** (Function) - adds the language. *name* is the name for locale, and *keys* is object with translations.
+**Aztec.addLocale(name, keys)** (Function) - adds the language. *name* is the name for locale, and *keys* is object with translations.
 
-**Aztec.setCurrentLanguage(name)** (Function) - sets the current language. Please, add the language before setting it as current.
+**Aztec.setLocale(name)** (Function) - sets the current language. Please, add the language before setting it as current.
 
 **Aztec.render(element)** (Function) - renders the page/element. If element is not specified, then whole page will be rendered.
 

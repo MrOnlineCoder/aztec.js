@@ -12,7 +12,7 @@
 	"use strict";
 
    var languages = {};
-   var currentLanguage = "default";
+   var currentLocale = "default";
    var regex = /{%[a-zA-Z0-9_]+%}/igm;
    var startBracket = "{%";
    var endBracket = "%}";
@@ -29,7 +29,7 @@
    function parseString(str) {
    
 	var matches = str.match(regex);
-	var lang = Aztec.getCurrentLanguage();
+	var lang = Aztec.getCurrentLocale();
 
 	for (var match in matches) {
 		var key = matches[match].substring(2,matches[match].length-2);
@@ -41,34 +41,34 @@
    var Aztec = {
    	debug: false,
    	translateClass: "translatable",
-   	addLanguage: function(name, keys) {
+   	addLocale: function(name, keys) {
    		if (typeof(name) != "string") {
-   			err("addLanguage() - <name> parameter is not a String!");
+   			err("addLocale() - <name> parameter is not a String!");
    			return false;
    		}
 
    		if (typeof(keys) != "object") {
-   			err("addLanguage() - <keys> parameter is not an Object!");
+   			err("addLocale() - <keys> parameter is not an Object!");
    			return false;
    		}
 
    		languages[name] = keys;
-   		log("Language <"+name+"> added.");
+   		log("Locale <"+name+"> added.");
    		return true;
    	},
-   	setCurrentLanguage: function(name) {
+   	setLocale: function(name) {
    		if (typeof(name) != "string") {
-   			err("setCurrentLanguage() - <name> parameter is not a String!");
+   			err("setLocale() - <name> parameter is not a String!");
    			return false;
    		}
 
    		if (languages[name] === null) {
-   			err("setCurrentLanguage() - Language with given <name> does not exist: "+name);
+   			err("setLocale() - Locale with given <name> does not exist: "+name);
    			return false;
    		}
 
-   		currentLanguage = name;
-   		log("Language <"+name+"> activated.");
+   		currentLocale = name;
+   		log("Locale <"+name+"> activated.");
    		return true;
    	},
    	render: function(element) {
@@ -85,8 +85,8 @@
    		}
    		if (Aztec.debug) console.timeEnd("Elapsed time");
    	},
-   	getCurrentLanguage: function() {
-   		return languages[currentLanguage];
+   	getCurrentLocale: function() {
+   		return languages[currentLocale];
    	},
    	translate: function(name) {
    		if (typeof(name) != "string") {
@@ -94,12 +94,12 @@
    			return false;
    		}
 
-   		if (Aztec.getCurrentLanguage()[name] === null) {
+   		if (Aztec.getCurrentLocale()[name] === null) {
    			err("translate() - key with given name does not exist: "+name);
    			return false;
    		}
 
-   		return Aztec.getCurrentLanguage()[name];
+   		return Aztec.getCurrentLocale()[name];
    	}
    };
 
