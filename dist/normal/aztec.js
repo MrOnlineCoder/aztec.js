@@ -63,7 +63,7 @@
    		}
 
    		if (languages[name] === null) {
-   			err("setCurrentLanguage() - Language with given <name> does not exists: "+name);
+   			err("setCurrentLanguage() - Language with given <name> does not exist: "+name);
    			return false;
    		}
 
@@ -87,6 +87,19 @@
    	},
    	getCurrentLanguage: function() {
    		return languages[currentLanguage];
+   	},
+   	translate: function(name) {
+   		if (typeof(name) != "string") {
+   			err("translate() - <name> parameter is not a String!");
+   			return false;
+   		}
+
+   		if (Aztec.getCurrentLanguage()[name] === null) {
+   			err("translate() - key with given name does not exist: "+name);
+   			return false;
+   		}
+
+   		return Aztec.getCurrentLanguage()[name];
    	}
    };
 

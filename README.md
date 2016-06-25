@@ -75,6 +75,14 @@ Hello, I am from England. The current locale is English!
 
 ```
 
+You can also get translation from Javascript:
+
+```javascript
+
+Aztec.translate("country"); // => "England"
+
+```
+
 ## Documentation:
 
 **Aztec.debug** (Boolean) - should Aztec.js actions be logged in console?
