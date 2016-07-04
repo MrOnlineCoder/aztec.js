@@ -47,15 +47,15 @@ Now, let's move to HTML:
 
 ```html
 
-<p class="translatable">Hello, I am from {%country%}. The current locale is {%locale%}</p>
+<p render="Hello, I am from {%country%}. The current locale is {%locale%}"></p>
 
 ```
 
 So, what we did in this part of code?
 
-1.We added a **translatable** class for our **p** element, so Aztec.js now know that this element should be rendered.
+1.We added a **render** attribute to our **p** element, so Aztec.js now know that this element should be rendered.
 
-2.Added the **template tags**: country and locale. The values for that tags are taken from object passed to **addLanguage** method.
+2.Added the **template tags**: country and locale. The values for that tags are taken from object passed to **addLocale** method.
 
 And the final step:
 

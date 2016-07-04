@@ -8,11 +8,12 @@
 <div>
 Text:<br>
 
-<p class="translatable">Hello, I am from {%country%}. The current locale is {%locale%}</p>
-
+<p render="Hello, I am from {%country%}. The current locale is {%locale%}. "></p>
+Click the button to render!
 <br>
 
-<button onclick="updateText()">Render!</button>
+<button onclick="updateText()">Render as English!</button>
+<button onclick="updateTextWeb()">Render as test locale!</button>
 
 </div>
 
@@ -20,12 +21,20 @@ Text:<br>
 <script src="aztec.js"></script>
 <script type="text/javascript">
 	function updateText() {
+		Aztec.setLocale("english");
+		Aztec.render();
+		console.log("Translation from JavaScript: "+Aztec.translate("country"));
+	}	
+
+	function updateTextWeb() {
+		Aztec.setLocale("web");
 		Aztec.render();
 		console.log("Translation from JavaScript: "+Aztec.translate("country"));
 	}
 
 	Aztec.debug = true;
 	Aztec.addLocale("english", {country: "England", locale: "English!"});
+	Aztec.addLocale("web", {country: "Web", locale: "JavaScript"});
 	Aztec.setLocale("english");
 </script>
 </body>

@@ -33,6 +33,10 @@
 
 	for (var match in matches) {
 		var key = matches[match].substring(2,matches[match].length-2);
+      if (!lang[key]) {
+         str = str.replace(startBracket+key+endBracket, "");
+         continue;
+      }
 		str = str.replace(startBracket+key+endBracket, lang[key]);
 	}
 	return str;
@@ -40,7 +44,7 @@
 
    var Aztec = {
    	debug: false,
-   	translateClass: "translatable",
+   	translateAttr: "render",
    	addLocale: function(name, keys) {
    		if (typeof(name) != "string") {
    			err("addLocale() - <name> parameter is not a String!");
@@ -78,10 +82,10 @@
    			log("render() - <element> is not specified or it is body, rendering whole page...");
    		}
 
-   		var nodes = element.getElementsByClassName(this.translateClass);
+   		var nodes = element.querySelectorAll("["+this.translateAttr+"]");
    		for (var i = 0; i<nodes.length;i++) {
    			log("Rendering node: "+i);
-   			nodes[i].innerHTML = parseString(nodes[i].innerHTML);
+   			nodes[i].innerHTML = parseString(nodes[i].getAttribute(this.translateAttr));
    		}
    		if (Aztec.debug) console.timeEnd("Elapsed time");
    	},
