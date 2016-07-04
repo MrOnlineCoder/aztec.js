@@ -87,7 +87,7 @@ Aztec.translate("country"); // => "England"
 
 **Aztec.debug** (Boolean) - should Aztec.js actions be logged in console?
 
-**Aztec.translateaAttr** (String) - a attribute for elements which should be rendered. Default: *render*
+**Aztec.translateAttr** (String) - a attribute for elements which should be rendered. Default: *render*
 
 **Aztec.addLocale(name, keys)** (Function) - adds the language. *name* is the name for locale, and *keys* is object with translations.
 
